@@ -58,6 +58,10 @@
       padding: 1rem;
       border-radius: 0 5px 5px 5px;
       margin-top: -1px;
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
     }
     .carousel {
       display: flex;
@@ -87,7 +91,6 @@
     .slideshow-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(3, auto);
       gap: 2rem;
       margin-top: 2rem;
     }
@@ -127,11 +130,6 @@
     }
     .arrow.left { left: 0; }
     .arrow.right { right: 0; }
-    .slideshow-grid > div:last-child {
-      grid-column: span 2;
-      max-width: 60%;
-      margin: 0 auto;
-    }
   </style>
 </head>
 <body>
@@ -140,18 +138,17 @@
     <p>Built on my HP Envy · Powered by VirtualBox</p>
   </header>
   <main>
-    <!-- Windows tab content -->
-    <div class="tab-content" id="windows">
+    <div class="tabs">
+      <button class="tab-btn active" onclick="showTab('windows', event)">Windows Lab</button>
+      <button class="tab-btn" onclick="showTab('linux', event)">Linux Lab</button>
+      <button class="tab-btn" onclick="showTab('firewall', event)">Firewall Setup</button>
+    </div>
+    <div class="tab-content active" id="windows">
       <h3>Windows Environment Lab</h3>
       <h4>VM Resource Allocation</h4>
       <table>
         <thead>
-          <tr>
-            <th>VM Name</th>
-            <th>OS / Role</th>
-            <th>RAM (GB)</th>
-            <th>Storage (GB)</th>
-          </tr>
+          <tr><th>VM Name</th><th>OS / Role</th><th>RAM (GB)</th><th>Storage (GB)</th></tr>
         </thead>
         <tbody>
           <tr><td>pfSense</td><td>Virtual firewall/router</td><td>1</td><td>10</td></tr>
@@ -161,7 +158,6 @@
           <tr><td>File Server</td><td>Windows Server (SMB Shares)</td><td>4</td><td>50</td></tr>
         </tbody>
       </table>
-
       <div class="slideshow-grid">
         <div class="slideshow-container">
           <button class="arrow left" onclick="changeSlide(0,-1)">&#10094;</button>
@@ -195,6 +191,14 @@
         </div>
       </div>
     </div>
+    <div class="tab-content" id="linux">
+      <h3>Linux Lab</h3>
+      <p>Linux network configurations and services will be detailed here.</p>
+    </div>
+    <div class="tab-content" id="firewall">
+      <h3>Firewall (pfSense)</h3>
+      <p>Firewall configuration and rules for network segmentation.</p>
+    </div>
   </main>
   <footer>
     &copy; 2025 Jeffrey Betancur · jeffbeta12.github.io
@@ -203,9 +207,9 @@
     function showTab(id, event) {
       const tabs = document.querySelectorAll('.tab-content');
       const buttons = document.querySelectorAll('.tab-btn');
-      tabs.forEach(tab => tab.style.display = 'none');
-      document.getElementById(id).style.display = 'block';
+      tabs.forEach(tab => tab.classList.remove('active'));
       buttons.forEach(btn => btn.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
       event.target.classList.add('active');
     }
     const current = [0, 0, 0, 0, 0];
