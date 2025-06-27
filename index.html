@@ -93,8 +93,8 @@
     .slideshow-container {
       position: relative;
       background: #f9f9f9;
-      height: 240px;
-      width: 240px;
+      height: 260px;
+      width: 260px;
       padding: 1rem;
       border-radius: 10px;
       box-shadow: 0 0 8px rgba(0,0,0,0.1);
@@ -102,7 +102,6 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      cursor: pointer;
     }
     .slide-img {
       display: none;
@@ -128,33 +127,6 @@
     }
     .arrow.left { left: 0; }
     .arrow.right { right: 0; }
-
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-    .modal-content {
-      position: relative;
-      max-width: 90%;
-      max-height: 90%;
-    }
-    .modal-content img {
-      width: 100%;
-      height: auto;
-    }
-    .modal .arrow {
-      font-size: 3rem;
-      color: white;
-      background: transparent;
-    }
   </style>
 </head>
 <body>
@@ -163,61 +135,90 @@
     <p>Built on my HP Envy · Powered by VirtualBox</p>
   </header>
   <main>
-    <!-- retain existing working HTML layout, including tab and slideshows -->
-  </main>
-  <div class="modal" id="lightboxModal" onclick="closeModal(event)">
-    <button class="arrow left" onclick="navigateModal(-1, event)">&#10094;</button>
-    <div class="modal-content">
-      <img id="modalImage" src="ADVMinfo.png" alt="Preview">
+    <h2>My Virtual Lab Setup</h2>
+    <p>This lab simulates a professional enterprise network for testing and learning:</p>
+    <ul>
+      <li><strong>pfSense</strong> – Virtual firewall/router</li>
+      <li><strong>Active Directory</strong> – Domain Controller (jeff.local)</li>
+      <li><strong>Windows Client</strong> – Joined to AD domain</li>
+      <li><strong>Ubuntu Apache Server</strong> – Web server with HTML content</li>
+      <li><strong>File Server</strong> – Shares via SMB</li>
+    </ul>
+    <hr>
+    <h2>💻 Project Tabs</h2>
+    <div class="tabs">
+      <button class="tab-btn active" onclick="showTab('windows', event)">Windows Lab</button>
+      <button class="tab-btn" onclick="showTab('linux', event)">Linux Lab</button>
+      <button class="tab-btn" onclick="showTab('firewall', event)">Firewall Setup</button>
     </div>
-    <button class="arrow right" onclick="navigateModal(1, event)">&#10095;</button>
-  </div>
+    <div class="tab-content" id="windows">
+      <h3>Windows Environment Lab</h3>
+      <h4>VM Resource Allocation</h4>
+      <table>
+        <thead>
+          <tr><th>VM Name</th><th>OS / Role</th><th>RAM (GB)</th><th>Storage (GB)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>pfSense</td><td>Virtual firewall/router</td><td>1</td><td>10</td></tr>
+          <tr><td>Active Directory DC</td><td>Windows Server 2019 AD/DNS</td><td>4</td><td>60</td></tr>
+          <tr><td>Windows Client</td><td>Windows 10 domain client</td><td>4</td><td>40</td></tr>
+          <tr><td>Apache Web Server</td><td>Ubuntu + Apache</td><td>2</td><td>20</td></tr>
+          <tr><td>File Server</td><td>Windows Server (SMB Shares)</td><td>4</td><td>50</td></tr>
+        </tbody>
+      </table>
+      <hr>
+      <h2>📸 Lab Screenshots</h2>
+      <div class="slideshow-grid">
+        <div class="slideshow-container">
+          <h3>Active Directory</h3>
+          <button class="arrow left" onclick="changeSlide(0, -1)">&#10094;</button>
+          <button class="arrow right" onclick="changeSlide(0, 1)">&#10095;</button>
+          <img src="ADVMinfo.png" class="slide-img slide-0 active">
+          <img src="ad2.png" class="slide-img slide-0">
+        </div>
+        <div class="slideshow-container">
+          <h3>pfSense</h3>
+          <button class="arrow left" onclick="changeSlide(1, -1)">&#10094;</button>
+          <button class="arrow right" onclick="changeSlide(1, 1)">&#10095;</button>
+          <img src="pf1.png" class="slide-img slide-1 active">
+          <img src="pf2.png" class="slide-img slide-1">
+        </div>
+        <div class="slideshow-container">
+          <h3>Windows Client</h3>
+          <button class="arrow left" onclick="changeSlide(2, -1)">&#10094;</button>
+          <button class="arrow right" onclick="changeSlide(2, 1)">&#10095;</button>
+          <img src="client1.png" class="slide-img slide-2 active">
+          <img src="client2.png" class="slide-img slide-2">
+        </div>
+        <div class="slideshow-container">
+          <h3>Web Server</h3>
+          <button class="arrow left" onclick="changeSlide(3, -1)">&#10094;</button>
+          <button class="arrow right" onclick="changeSlide(3, 1)">&#10095;</button>
+          <img src="web1.png" class="slide-img slide-3 active">
+          <img src="web2.png" class="slide-img slide-3">
+        </div>
+        <div class="slideshow-container">
+          <h3>File Server</h3>
+          <button class="arrow left" onclick="changeSlide(4, -1)">&#10094;</button>
+          <button class="arrow right" onclick="changeSlide(4, 1)">&#10095;</button>
+          <img src="file1.png" class="slide-img slide-4 active">
+          <img src="file2.png" class="slide-img slide-4">
+        </div>
+      </div>
+    </div>
+    <div class="tab-content" id="linux" style="display:none">
+      <h3>Linux Lab</h3>
+      <p>Linux network configurations and services will be detailed here.</p>
+    </div>
+    <div class="tab-content" id="firewall" style="display:none">
+      <h3>Firewall (pfSense)</h3>
+      <p>Firewall configuration and rules for network segmentation.</p>
+    </div>
+  </main>
   <footer>
     &copy; 2025 Jeffrey Betancur · jeffbeta12.github.io
   </footer>
   <script>
-    const current = [0, 0, 0, 0, 0];
-    const groups = [
-      Array.from(document.getElementsByClassName('slide-0')),
-      Array.from(document.getElementsByClassName('slide-1')),
-      Array.from(document.getElementsByClassName('slide-2')),
-      Array.from(document.getElementsByClassName('slide-3')),
-      Array.from(document.getElementsByClassName('slide-4'))
-    ];
-    function changeSlide(group, direction) {
-      const imgs = groups[group];
-      imgs[current[group]].classList.remove("active");
-      current[group] = (current[group] + direction + imgs.length) % imgs.length;
-      imgs[current[group]].classList.add("active");
-    }
-
-    let modal = document.getElementById("lightboxModal");
-    let modalImg = document.getElementById("modalImage");
-    let currentModalGroup = 0;
-
-    document.querySelectorAll('.slideshow-container').forEach((box, i) => {
-      box.addEventListener('click', () => openModal(i));
-    });
-
-    function openModal(groupIndex) {
-      currentModalGroup = groupIndex;
-      modal.style.display = "flex";
-      const img = groups[groupIndex][current[groupIndex]];
-      modalImg.src = img.src;
-    }
-
-    function closeModal(e) {
-      if (e.target === modal || e.target === modalImg) {
-        modal.style.display = "none";
-      }
-    }
-
-    function navigateModal(direction, e) {
-      e.stopPropagation();
-      changeSlide(currentModalGroup, direction);
-      modalImg.src = groups[currentModalGroup][current[currentModalGroup]].src;
-    }
-
     function showTab(id, event) {
       const tabs = document.querySelectorAll('.tab-content');
       const buttons = document.querySelectorAll('.tab-btn');
@@ -225,6 +226,13 @@
       document.getElementById(id).style.display = 'block';
       buttons.forEach(btn => btn.classList.remove('active'));
       event.target.classList.add('active');
+    }
+    const current = [0, 0, 0, 0, 0];
+    function changeSlide(group, direction) {
+      const imgs = document.querySelectorAll(`.slide-${group}`);
+      imgs[current[group]].classList.remove("active");
+      current[group] = (current[group] + direction + imgs.length) % imgs.length;
+      imgs[current[group]].classList.add("active");
     }
   </script>
 </body>
