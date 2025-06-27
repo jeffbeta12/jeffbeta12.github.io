@@ -91,6 +91,7 @@
       max-height: 100%;
       object-fit: contain;
       border-radius: 8px;
+      cursor: pointer;
     }
     .slide-img.active {
       display: block;
@@ -109,6 +110,34 @@
     }
     .arrow.left { left: 10px; }
     .arrow.right { right: 10px; }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8);
+    }
+    .modal-content {
+      display: block;
+      margin: 5% auto;
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.2);
+    }
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -202,6 +231,10 @@
   <footer>
     &copy; 2025 Jeffrey Betancur · jeffbeta12.github.io
   </footer>
+  <div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImage">
+  </div>
   <script>
     function showTab(id, event) {
       const tabs = document.querySelectorAll('.tab-content');
@@ -227,6 +260,18 @@
       imgs[current[group]].classList.remove("active");
       current[group] = (current[group] + direction + imgs.length) % imgs.length;
       imgs[current[group]].classList.add("active");
+    }
+
+    // Modal functionality
+    document.querySelectorAll('.slide-img').forEach(img => {
+      img.addEventListener('click', function() {
+        document.getElementById('modalImage').src = this.src;
+        document.getElementById('imageModal').style.display = "block";
+      });
+    });
+
+    function closeModal() {
+      document.getElementById('imageModal').style.display = "none";
     }
   </script>
 </body>
