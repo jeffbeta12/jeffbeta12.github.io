@@ -128,5 +128,18 @@
   <footer>
     &copy; 2025 Jeffrey Betancur · jeffbeta12.github.io
   </footer>
+  <script>
+  function showTab(id) {
+    const tabs = document.querySelectorAll('.tab-content');
+    const buttons = document.querySelectorAll('.tab-btn');
+
+    tabs.forEach(tab => tab.style.display = 'none');
+    document.getElementById(id).style.display = 'block';
+
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+</script>
+
 </body>
 </html>
