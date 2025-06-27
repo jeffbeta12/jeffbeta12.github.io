@@ -1,18 +1,64 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Jeff's Home Lab</title>
-  </head>
-  <body>
-    <h1>Welcome to My Home Lab Portfolio</h1>
-    <p>This site documents the 5 VMs I built on my HP Envy laptop.</p>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jeff's Home Lab</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #1f1f1f;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    ul {
+      line-height: 1.8;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #888;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to Jeff's Home Lab</h1>
+    <p>Built on my HP Envy · Powered by VirtualBox</p>
+  </header>
+
+  <main>
+    <h2>My Virtual Lab Setup</h2>
+    <p>This lab simulates a professional enterprise network for testing and learning:</p>
     <ul>
-      <li>pfSense Firewall</li>
-      <li>Active Directory Domain Controller</li>
-      <li>Windows Client</li>
-      <li>Ubuntu Apache Server</li>
-      <li>File Server</li>
+      <li><strong>pfSense</strong> – Virtual firewall/router</li>
+      <li><strong>Active Directory</strong> – Domain Controller (jeff.local)</li>
+      <li><strong>Windows Client</strong> – Joined to AD domain</li>
+      <li><strong>Ubuntu Apache Server</strong> – Web server with HTML content</li>
+      <li><strong>File Server</strong> – Shares via SMB</li>
     </ul>
-    <p>More coming soon!</p>
-  </body>
+
+    <p>More updates coming soon – including diagrams, screenshots, and GitHub-hosted docs.</p>
+  </main>
+
+  <footer>
+    &copy; 2025 Jeffrey Betancur · jeffbeta12.github.io
+  </footer>
+</body>
 </html>
