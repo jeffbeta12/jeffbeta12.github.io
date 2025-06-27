@@ -59,6 +59,18 @@
       border-radius: 0 5px 5px 5px;
       margin-top: -1px;
     }
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .carousel img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
     table {
       width: 100%;
       border-collapse: collapse;
@@ -73,42 +85,37 @@
       background-color: #f4f4f4;
     }
     .slideshow-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-    .slideshow-box {
-      flex: 1 1 calc(50% - 1rem);
-      background: #eee;
-      border-radius: 8px;
       position: relative;
-      overflow: hidden;
-      min-height: 200px;
-    }
-    .slide-image {
       width: 100%;
-      height: auto;
+      max-width: 600px;
+      margin: 2rem auto;
+      background: #f9f9f9;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+    .slide-img {
+      display: none;
+      width: 100%;
+      border-radius: 8px;
+    }
+    .slide-img.active {
       display: block;
     }
     .arrow {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background-color: rgba(0, 0, 0, 0.3);
+      font-size: 2rem;
+      background: rgba(255, 255, 255, 0.4);
       border: none;
-      color: white;
-      font-size: 1.5rem;
       cursor: pointer;
-      z-index: 1;
-      padding: 0.5rem;
+      padding: 0 1rem;
+      z-index: 2;
+      color: #333;
     }
-    .arrow-left {
-      left: 0;
-    }
-    .arrow-right {
-      right: 0;
-    }
+    .arrow.left { left: 0; }
+    .arrow.right { right: 0; }
   </style>
 </head>
 <body>
@@ -118,6 +125,7 @@
   </header>
   <main>
     <h2>My Virtual Lab Setup</h2>
+    <p>This lab simulates a professional enterprise network for testing and learning:</p>
     <ul>
       <li><strong>pfSense</strong> – Virtual firewall/router</li>
       <li><strong>Active Directory</strong> – Domain Controller (jeff.local)</li>
@@ -125,59 +133,84 @@
       <li><strong>Ubuntu Apache Server</strong> – Web server with HTML content</li>
       <li><strong>File Server</strong> – Shares via SMB</li>
     </ul>
-
-    <h2>🖼️ Lab Snapshots</h2>
-    <div class="slideshow-container">
-      <div class="slideshow-box" id="ad-box">
-        <button class="arrow arrow-left" onclick="changeSlide('ad', -1)">&#8249;</button>
-        <img class="slide-image" id="ad-slide" src="ad1.png" alt="Active Directory Slide">
-        <button class="arrow arrow-right" onclick="changeSlide('ad', 1)">&#8250;</button>
-      </div>
-      <div class="slideshow-box" id="pfsense-box">
-        <button class="arrow arrow-left" onclick="changeSlide('pfsense', -1)">&#8249;</button>
-        <img class="slide-image" id="pfsense-slide" src="pfsense1.png" alt="pfSense Slide">
-        <button class="arrow arrow-right" onclick="changeSlide('pfsense', 1)">&#8250;</button>
-      </div>
-      <div class="slideshow-box" id="client-box">
-        <button class="arrow arrow-left" onclick="changeSlide('client', -1)">&#8249;</button>
-        <img class="slide-image" id="client-slide" src="client1.png" alt="Client Slide">
-        <button class="arrow arrow-right" onclick="changeSlide('client', 1)">&#8250;</button>
-      </div>
-      <div class="slideshow-box" id="web-box">
-        <button class="arrow arrow-left" onclick="changeSlide('web', -1)">&#8249;</button>
-        <img class="slide-image" id="web-slide" src="web1.png" alt="Web Server Slide">
-        <button class="arrow arrow-right" onclick="changeSlide('web', 1)">&#8250;</button>
-      </div>
-      <div class="slideshow-box" id="file-box">
-        <button class="arrow arrow-left" onclick="changeSlide('file', -1)">&#8249;</button>
-        <img class="slide-image" id="file-slide" src="file1.png" alt="File Server Slide">
-        <button class="arrow arrow-right" onclick="changeSlide('file', 1)">&#8250;</button>
-      </div>
+    <hr>
+    <h2>💻 Project Tabs</h2>
+    <div class="tabs">
+      <button class="tab-btn active" onclick="showTab('windows', event)">Windows Lab</button>
+      <button class="tab-btn" onclick="showTab('linux', event)">Linux Lab</button>
+      <button class="tab-btn" onclick="showTab('firewall', event)">Firewall Setup</button>
     </div>
+    <div class="tab-content" id="windows">
+      <h3>Windows Environment Lab</h3>
+      <h4>VM Resource Allocation</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>VM Name</th>
+            <th>OS / Role</th>
+            <th>RAM (GB)</th>
+            <th>Storage (GB)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>pfSense</td><td>Virtual firewall/router</td><td>1</td><td>10</td></tr>
+          <tr><td>Active Directory DC</td><td>Windows Server 2019 AD/DNS</td><td>4</td><td>60</td></tr>
+          <tr><td>Windows Client</td><td>Windows 10 domain client</td><td>4</td><td>40</td></tr>
+          <tr><td>Apache Web Server</td><td>Ubuntu + Apache</td><td>2</td><td>20</td></tr>
+          <tr><td>File Server</td><td>Windows Server (SMB Shares)</td><td>4</td><td>50</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tab-content" id="linux" style="display:none">
+      <h3>Linux Lab</h3>
+      <p>Linux network configurations and services will be detailed here.</p>
+    </div>
+    <div class="tab-content" id="firewall" style="display:none">
+      <h3>Firewall (pfSense)</h3>
+      <p>Firewall configuration and rules for network segmentation.</p>
+    </div>
+    <hr>
+    <h2>📸 Lab Screenshots</h2>
+    <div id="slides-wrapper"></div>
   </main>
-
   <footer>
     &copy; 2025 Jeffrey Betancur · jeffbeta12.github.io
   </footer>
-
   <script>
+    function showTab(id, event) {
+      const tabs = document.querySelectorAll('.tab-content');
+      const buttons = document.querySelectorAll('.tab-btn');
+      tabs.forEach(tab => tab.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+
     const slides = {
-      ad: ['ad1.png', 'ad2.png'],
-      pfsense: ['pfsense1.png', 'pfsense2.png'],
-      client: ['client1.png', 'client2.png'],
-      web: ['web1.png', 'web2.png'],
-      file: ['file1.png', 'file2.png']
+      "Active Directory": ["ad1.png", "ad2.png", "ad3.png"],
+      "pfSense": ["pf1.png", "pf2.png"],
+      "Windows Client": ["client1.png", "client2.png"],
+      "Web Server": ["web1.png", "web2.png"],
+      "File Server": ["file1.png", "file2.png"]
     };
-    const indices = {
-      ad: 0,
-      pfsense: 0,
-      client: 0,
-      web: 0,
-      file: 0
-    };
-    function changeSlide(id, dir) {
-      indices[id] = (indices[id] + dir + slides[id].length) % slides[id].length;
-      document.getElementById(`${id}-slide`).src = slides[id][indices[id]];
+
+    const wrapper = document.getElementById("slides-wrapper");
+    Object.entries(slides).forEach(([title, images], idx) => {
+      let html = `<div class="slideshow-container">
+        <h3>${title}</h3>
+        <button class="arrow left" onclick="changeSlide(${idx}, -1)">&#10094;</button>
+        <button class="arrow right" onclick="changeSlide(${idx}, 1)">&#10095;</button>
+        ${images.map((src, i) => `<img src="${src}" class="slide-img slide-${idx} ${i === 0 ? 'active' : ''}" />`).join('')}
+      </div>`;
+      wrapper.innerHTML += html;
+    });
+
+    const current = Array(Object.keys(slides).length).fill(0);
+    function changeSlide(group, direction) {
+      const imgs = document.querySelectorAll(`.slide-${group}`);
+      imgs[current[group]].classList.remove("active");
+      current[group] = (current[group] + direction + imgs.length) % imgs.length;
+      imgs[current[group]].classList.add("active");
     }
   </script>
 </body>
