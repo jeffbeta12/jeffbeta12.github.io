@@ -1,4 +1,4 @@
-ve<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -36,57 +36,54 @@ ve<!DOCTYPE html>
       margin-top: 3rem;
     }
     .tabs {
-  margin-top: 2rem;
-  text-align: center;
-}
-.tab-btn {
-  background-color: #ddd;
-  border: none;
-  padding: 10px 20px;
-  margin: 0 5px;
-  cursor: pointer;
-  font-weight: bold;
-  border-radius: 5px 5px 0 0;
-}
-.tab-btn.active {
-  background-color: #fff;
-  border-bottom: 2px solid transparent;
-}
-.tab-content {
-  background: #fff;
-  border: 1px solid #ccc;
-  padding: 1rem;
-  border-radius: 0 5px 5px 5px;
-  margin-top: -1px;
-}
-
-.carousel {
-  display: flex;
-  overflow-x: auto;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-.carousel img {
-  width: 100%;
-  max-width: 300px;
-  border-radius: 10px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
-}
-
+      margin-top: 2rem;
+      text-align: center;
+    }
+    .tab-btn {
+      background-color: #ddd;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 5px;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 5px 5px 0 0;
+    }
+    .tab-btn.active {
+      background-color: #fff;
+      border-bottom: 2px solid transparent;
+    }
+    .tab-content {
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 1rem;
+      border-radius: 0 5px 5px 5px;
+      margin-top: -1px;
+    }
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .carousel img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
     table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
-}
-th, td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-th {
-  background-color: #f4f4f4;
-}
-
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
   </style>
 </head>
 <body>
@@ -109,95 +106,95 @@ th {
     <p>More updates coming soon – including diagrams, screenshots, and GitHub-hosted docs.</p>
 
     <hr>
-<h2>💻 Project Tabs</h2>
+    <h2>💻 Project Tabs</h2>
 
-<div class="tabs">
-  <button class="tab-btn active" onclick="showTab('windows', event)">Windows Lab</button>
-  <button class="tab-btn" onclick="showTab('linux', event)">Linux Lab</button>
-  <button class="tab-btn" onclick="showTab('firewall', event)">Firewall Setup</button>
-</div>
+    <div class="tabs">
+      <button class="tab-btn active" onclick="showTab('windows', event)">Windows Lab</button>
+      <button class="tab-btn" onclick="showTab('linux', event)">Linux Lab</button>
+      <button class="tab-btn" onclick="showTab('firewall', event)">Firewall Setup</button>
+    </div>
 
-<div class="tab-content" id="windows">
-  <h3>Windows Environment Lab</h3>
-  <p>This lab simulates a basic Windows network domain. Below are screenshots:</p>
-  <div class="carousel">
-    <h4>VM Resource Allocation</h4>
-<table>
-  <thead>
-    <tr>
-      <th>VM Name</th>
-      <th>OS / Role</th>
-      <th>RAM (GB)</th>
-      <th>Storage (GB)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>pfSense</td>
-      <td>Virtual firewall/router</td>
-      <td>1</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <td>Active Directory DC</td>
-      <td>Windows Server 2019 AD/DNS</td>
-      <td>4</td>
-      <td>60</td>
-    </tr>
-    <tr>
-      <td>Windows Client</td>
-      <td>Windows 10 domain client</td>
-      <td>4</td>
-      <td>40</td>
-    </tr>
-    <tr>
-      <td>Apache Web Server</td>
-      <td>Ubuntu + Apache</td>
-      <td>2</td>
-      <td>20</td>
-    </tr>
-    <tr>
-      <td>File Server</td>
-      <td>Windows Server (SMB Shares)</td>
-      <td>4</td>
-      <td>50</td>
-    </tr>
-  </tbody>
-</table>
+    <div class="tab-content" id="windows">
+      <h3>Windows Environment Lab</h3>
+      <p>This lab simulates a basic Windows network domain. Below are screenshots:</p>
+      
+      <div class="carousel">
+        <img src="screenshot1.png" alt="Screenshot 1">
+        <img src="screenshot2.png" alt="Screenshot 2">
+        <img src="screenshot3.png" alt="Screenshot 3">
+      </div>
 
-    <img src="screenshot1.png" alt="Screenshot 1">
-    <img src="screenshot2.png" alt="Screenshot 2">
-    <img src="screenshot3.png" alt="Screenshot 3">
-  </div>
-</div>
+      <h4>VM Resource Allocation</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>VM Name</th>
+            <th>OS / Role</th>
+            <th>RAM (GB)</th>
+            <th>Storage (GB)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>pfSense</td>
+            <td>Virtual firewall/router</td>
+            <td>1</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td>Active Directory DC</td>
+            <td>Windows Server 2019 AD/DNS</td>
+            <td>4</td>
+            <td>60</td>
+          </tr>
+          <tr>
+            <td>Windows Client</td>
+            <td>Windows 10 domain client</td>
+            <td>4</td>
+            <td>40</td>
+          </tr>
+          <tr>
+            <td>Apache Web Server</td>
+            <td>Ubuntu + Apache</td>
+            <td>2</td>
+            <td>20</td>
+          </tr>
+          <tr>
+            <td>File Server</td>
+            <td>Windows Server (SMB Shares)</td>
+            <td>4</td>
+            <td>50</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-<div class="tab-content" id="linux" style="display:none">
-  <h3>Linux Lab</h3>
-  <p>Linux network configurations and services will be detailed here.</p>
-</div>
+    <div class="tab-content" id="linux" style="display:none">
+      <h3>Linux Lab</h3>
+      <p>Linux network configurations and services will be detailed here.</p>
+    </div>
 
-<div class="tab-content" id="firewall" style="display:none">
-  <h3>Firewall (pfSense)</h3>
-  <p>Firewall configuration and rules for network segmentation.</p>
-</div>
-
+    <div class="tab-content" id="firewall" style="display:none">
+      <h3>Firewall (pfSense)</h3>
+      <p>Firewall configuration and rules for network segmentation.</p>
+    </div>
   </main>
 
   <footer>
     &copy; 2025 Jeffrey Betancur · jeffbeta12.github.io
   </footer>
+
   <script>
-  function showTab(id, event) {
-    const tabs = document.querySelectorAll('.tab-content');
-    const buttons = document.querySelectorAll('.tab-btn');
+    function showTab(id, event) {
+      const tabs = document.querySelectorAll('.tab-content');
+      const buttons = document.querySelectorAll('.tab-btn');
 
-    tabs.forEach(tab => tab.style.display = 'none');
-    document.getElementById(id).style.display = 'block';
+      tabs.forEach(tab => tab.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
 
-    buttons.forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
-  }
-</script>
-
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+  </script>
 </body>
 </html>
