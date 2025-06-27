@@ -164,20 +164,6 @@
     </div>
     <div class="tab-content" id="windows">
       <h3>Windows Environment Lab</h3>
-      <h4>VM Resource Allocation</h4>
-      <table>
-        <thead>
-          <tr><th>VM Name</th><th>OS / Role</th><th>RAM (GB)</th><th>Storage (GB)</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>pfSense</td><td>Virtual firewall/router</td><td>1</td><td>10</td></tr>
-          <tr><td>Active Directory DC</td><td>Windows Server 2019 AD/DNS</td><td>4</td><td>60</td></tr>
-          <tr><td>Windows Client</td><td>Windows 10 domain client</td><td>4</td><td>40</td></tr>
-          <tr><td>Apache Web Server</td><td>Ubuntu + Apache</td><td>2</td><td>20</td></tr>
-          <tr><td>File Server</td><td>Windows Server (SMB Shares)</td><td>4</td><td>50</td></tr>
-        </tbody>
-      </table>
-      <hr>
       <h2>📸 Lab Screenshots</h2>
       <div class="tabs">
         <button class="tab-btn active" onclick="showSlideshow('ad', event)">AD Server</button>
@@ -193,6 +179,7 @@
           <img src="images/ADVMinfo.png" class="slide-img slide-0 active">
           <img src="images/ADUC.png" class="slide-img slide-0">
           <img src="images/DNSManager.png" class="slide-img slide-0">
+          <img src="images/DNS_ARecords.png" class="slide-img slide-0">
         </div>
         <div class="slideshow-container" id="pf" style="display:none">
           <button class="arrow left" onclick="changeSlide(1, -1)">&#10094;</button>
@@ -222,6 +209,21 @@
           <img src="file2.png" class="slide-img slide-4">
         </div>
       </div>
+      <hr>
+      <h4>VM Resource Allocation</h4>
+      <table>
+        <thead>
+          <tr><th>VM Name</th><th>OS / Role</th><th>RAM (GB)</th><th>Storage (GB)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>pfSense</td><td>Virtual firewall/router</td><td>1</td><td>10</td></tr>
+          <tr><td>Active Directory DC</td><td>Windows Server 2019 AD/DNS</td><td>4</td><td>60</td></tr>
+          <tr><td>Windows Client</td><td>Windows 10 domain client</td><td>4</td><td>40</td></tr>
+          <tr><td>Apache Web Server</td><td>Ubuntu + Apache</td><td>2</td><td>20</td></tr>
+          <tr><td>File Server</td><td>Windows Server (SMB Shares)</td><td>4</td><td>50</td></tr>
+        </tbody>
+      </table>
+      <hr>
     </div>
     <div class="tab-content" id="linux" style="display:none">
       <h3>Linux Lab</h3>
