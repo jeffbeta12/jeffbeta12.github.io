@@ -181,11 +181,11 @@
       <h3>Windows Environment Lab</h3>
       <h2>📸 Lab Screenshots</h2>
       <div class="tabs">
-        <button class=".slideshow-btn active" onclick="showSlideshow('ad', event)">AD Server</button>
-        <button class=".slideshow-btn" onclick="showSlideshow('pf', event)">pfSense</button>
-        <button class=".slideshow-btn" onclick="showSlideshow('client', event)">Windows Client</button>
-        <button class=".slideshow-btn" onclick="showSlideshow('web', event)">Web Server</button>
-        <button class=".slideshow-btn" onclick="showSlideshow('file', event)">File Server</button>
+        <button class="slideshow-btn active" onclick="showSlideshow('ad', event)">AD Server</button>
+        <button class="slideshow-btn" onclick="showSlideshow('pf', event)">pfSense</button>
+        <button class="slideshow-btn" onclick="showSlideshow('client', event)">Windows Client</button>
+        <button class="slideshow-btn" onclick="showSlideshow('web', event)">Web Server</button>
+        <button class="slideshow-btn" onclick="showSlideshow('file', event)">File Server</button>
       </div>
       <div id="slideshows">
         <div class="slideshow-container" id="ad">
@@ -265,7 +265,7 @@
   <script>
     function showTab(id, event) {
       const tabs = document.querySelectorAll('.tab-content');
-      const buttons = document.querySelectorAll('.slideshow-btn');
+      const buttons = document.querySelectorAll('.tabs:first-of-type .tab-btn');
       tabs.forEach(tab => tab.style.display = 'none');
       document.getElementById(id).style.display = 'block';
       buttons.forEach(btn => btn.classList.remove('active'));
