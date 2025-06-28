@@ -139,20 +139,18 @@
       cursor: pointer;
     }
     .slideshow-btn {
-  background-color: #ddd;
-  border: none;
-  padding: 10px 20px;
-  margin: 0 5px;
-  cursor: pointer;
-  font-weight: bold;
-  border-radius: 5px 5px 0 0;
-}
-
-.slideshow-btn.active {
-  background-color: #fff;
-  border-bottom: 2px solid transparent;
-}
-
+      background-color: #ddd;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 5px;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 5px 5px 0 0;
+    }
+    .slideshow-btn.active {
+      background-color: #fff;
+      border-bottom: 2px solid transparent;
+    }
   </style>
 </head>
 <body>
@@ -230,6 +228,12 @@
           <img src="images/Computermgmt.png" class="slide-img slide-4">
         </div>
       </div>
+
+      <!-- 💬 Dynamic description box -->
+      <div id="slideshow-description" style="margin-top: 1rem; background: #f1f1f1; padding: 1rem; border-radius: 6px; font-size: 0.95rem; border: 1px solid #ccc;">
+        Active Directory VM handles domain authentication, DNS, and centralized user management in the lab.
+      </div>
+
       <hr>
       <h4>VM Resource Allocation</h4>
       <table>
@@ -279,6 +283,15 @@
       document.getElementById(id).style.display = 'flex';
       buttons.forEach(btn => btn.classList.remove('active'));
       event.target.classList.add('active');
+
+      const descriptions = {
+        ad: "Active Directory VM handles domain authentication, DNS, and centralized user management in the lab.",
+        pf: "pfSense is a virtual firewall/router managing DHCP, NAT, and routing for all VMs in the lab.",
+        client: "Windows 10 client is joined to the domain and used to test AD login, DNS resolution, and SMB file sharing.",
+        web: "Ubuntu Apache web server hosts a simple HTML site, simulating internal web service deployment.",
+        file: "File server VM provides network-shared storage via SMB, configured with proper permissions and mapped drives."
+      };
+      document.getElementById('slideshow-description').innerText = descriptions[id];
     }
 
     const current = [0, 0, 0, 0, 0];
