@@ -138,6 +138,21 @@
       font-weight: bold;
       cursor: pointer;
     }
+    .slideshow-btn {
+  background-color: #ddd;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 5px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px 5px 0 0;
+}
+
+.slideshow-btn.active {
+  background-color: #fff;
+  border-bottom: 2px solid transparent;
+}
+
   </style>
 </head>
 <body>
@@ -250,7 +265,7 @@
   <script>
     function showTab(id, event) {
       const tabs = document.querySelectorAll('.tab-content');
-      const buttons = document.querySelectorAll('.tabs:first-of-type .tab-btn');
+      const buttons = document.querySelectorAll('.slideshow-btn');
       tabs.forEach(tab => tab.style.display = 'none');
       document.getElementById(id).style.display = 'block';
       buttons.forEach(btn => btn.classList.remove('active'));
@@ -259,7 +274,7 @@
 
     function showSlideshow(id, event) {
       const sections = document.querySelectorAll('#slideshows > .slideshow-container');
-      const buttons = document.querySelectorAll('.tabs:last-of-type .tab-btn');
+      const buttons = document.querySelectorAll('.slideshow-btn');
       sections.forEach(s => s.style.display = 'none');
       document.getElementById(id).style.display = 'flex';
       buttons.forEach(btn => btn.classList.remove('active'));
